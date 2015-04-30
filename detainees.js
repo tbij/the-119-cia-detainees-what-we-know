@@ -8,11 +8,9 @@ function Interactive() {
                 prisonerItem.innerHTML = '<img class="prisonericon" src="prisoner-icons/prisoner-' + prisoner.status + '.png"/>'
                 prisonerItem.addEventListener('click', function (e) {
                     var prisonerItemSelected = document.querySelector('.who-are-they .selected')
-                    if (prisonerItemSelected) {
-                        var prisonerSelected = prisoners[prisonerItemSelected.id]
-                        prisonerItemSelected.innerHTML = '<img class="prisonericon" src="prisoner-icons/prisoner-' + prisonerSelected.status + '.png"/>'
-                        prisonerItemSelected.classList.remove('selected')
-                    }
+                    var prisonerSelected = prisoners[prisonerItemSelected.id]
+                    prisonerItemSelected.innerHTML = '<img class="prisonericon" src="prisoner-icons/prisoner-' + prisonerSelected.status + '.png"/>'
+                    prisonerItemSelected.classList.remove('selected')
                     var prisonerItem = e.target.parentElement
                     prisonerItem.classList.add('selected')
                     prisonerItem.innerHTML = '<img class="prisonericon" src="prisoner-icons/prisoner-' + prisoner.status + '-on.png"/>'
@@ -20,6 +18,11 @@ function Interactive() {
                 })
                 document.querySelector('.who-are-they ol').appendChild(prisonerItem)
             })
+	    var prisonerOne = prisoners[0]
+	    var prisonerItemOne = document.querySelector('.who-are-they ol :first-child')
+            prisonerItemOne.classList.add('selected')
+            prisonerItemOne.innerHTML = '<img class="prisonericon" src="prisoner-icons/prisoner-' + prisonerOne.status + '-on.png"/>'
+            document.querySelector('.who-are-they .prisonercard').innerHTML = '<a href="' + prisonerOne.url + '"><img src="prisoner-cards/' + prisonerOne.image + '"/></a>'
         })
     }
     
